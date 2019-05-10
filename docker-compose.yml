@@ -1,0 +1,140 @@
+version: '3.6'
+
+services:
+
+  djangoapp:
+    build:
+      context: ./services/web
+      dockerfile: Dockerfile
+    expose:
+      - 8000
+    container_name: djangoapp
+    restart: unless-stopped
+    tty: true
+    #working_dir: /home/app
+    #extra_hosts:
+    #  - "internal_host:172.27.0.1"
+    #env_file:
+    #  - .env
+    environment:
+      SERVICE_NAME: djangoapp
+    depends_on:
+      - pgdb # <--- this can be commented depending on which database is in use
+      - mysqldb # <--- this can be commented depending on which database is in use
+    networks:
+      - app
+    volumes:
+      #check the dockerfile inside web folder it contains an env variable called APP_HOME
+      # the same value must be set here also by using ./:/home/project/web any changes to files on the host system
+      # is immediately reflected inside the container
+      - type: "bind"
+        source: "./services/web"
+        target: "/home/project/web"
+    #  - .:/home/app/web
+    #  #- ./services/web:/home/app/web/
+
+  #postgresql service
+  pgdb:
+    build:
+      context: ./services/pgsql
+      dockerfile: Dockerfile
+    container_name: pgdb
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "54320:5432"
+    volumes:
+      - data-volume-pg:/var/lib/postgresql
+    env_file:
+      - ./services/pgsql/.env
+    networks:
+      - app
+
+  #mysql service
+  mysqldb:
+    build:
+      context: ./services/mysql
+      dockerfile: Dockerfile
+    container_name: mysqldb
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "33062:3306"
+    volumes:
+      - data-volume-mysql:/var/lib/mysql/
+      #- ./mysql/my.cnf:/etc/mysql/my.cnf
+    env_file:
+      - ./services/mysql/.env
+    networks:
+      - app
+
+  #Nginx Service
+  webserver:
+    build:
+        context: ./services/nginx
+        dockerfile: Dockerfile
+    restart: always
+    #image: nginx:alpine
+    container_name: webserver
+    environment:
+      SERVICE_NAME: webserver
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      #check the dockerfile inside web folder it contains an env variable called APP_HOME
+      # the same value must be set here also by using ./:/home/project/web any changes to files on the host system
+      # is immediately reflected inside the container
+      - ./:/home/project/web
+    #  - ./:/home/app
+    #  - ./webservices/nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - app
+    depends_on:
+      - djangoapp
+
+  # Forr phpmyadmin
+  pma:
+      image: phpmyadmin/phpmyadmin
+      container_name: phpmyadmin
+      restart: always
+      volumes:
+        - ./:/home/project/web #<-- check services/web/dockerfile APP_HOME value
+      ports:
+        - "8001:80"
+      depends_on:
+        - mysqldb
+      environment:
+        PMA_HOST: mysqldb
+        PMA_PORT: 3306
+      networks:
+        - app
+
+  #for postgres pgmyadmin
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+    volumes:
+       - pgadmin:/root/.pgadmin
+    ports:
+      - "${PGADMIN_PORT:-8002}:80"
+    networks:
+      - app
+    restart: unless-stopped
+
+
+networks:
+  app:
+    driver: bridge
+
+volumes:
+  data-volume-pg:
+    driver: local
+  data-volume-mysql:
+    driver: local
+  pgadmin:
