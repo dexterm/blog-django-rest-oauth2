@@ -14,8 +14,8 @@ https://linuxize.com/post/how-to-install-and-use-docker-compose-on-ubuntu-18-04/
 ```
 docker-compose up
 ```
-** or **
+**or**
 ```
 docker-compose up -d
 ```
-** docker-compose up -d [runs in detached mode or in background, allowing you to use the terminal window for other tasks] **
+**docker-compose up -d [runs in detached mode or in background, allowing you to use the terminal window for other tasks]**
