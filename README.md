@@ -10,6 +10,8 @@ https://linuxize.com/post/how-to-install-and-use-docker-on-ubuntu-18-04/
 ### How To Install and Use Docker Compose on Ubuntu 18.04
 https://linuxize.com/post/how-to-install-and-use-docker-compose-on-ubuntu-18-04/
 
+### For ease of readability the docker-compose environment variables have been stored in separate .env files
+
 ### Start the docker containers
 ```
 docker-compose up
@@ -19,3 +21,10 @@ docker-compose up
 docker-compose up -d
 ```
 **docker-compose up -d [runs in detached mode or in background, allowing you to use the terminal window for other tasks]**
+
+### Test postgresql connection from host system
+```
+docker exec -it pgdb  psql -h pgdb -U django -d my_project
+Syntax:
+ docker exec -it <service_name> psql -h <postgres_service_name> -U <POSTGRES_USER> -d <POSTGRES_DB>
+```
