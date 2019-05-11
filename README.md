@@ -30,11 +30,13 @@ Syntax:
 ```
 
 ### Verify phpMyAdmin
-#### phpMyAdmin service is configured on port 8001
+``` phpMyAdmin service is configured on port 8001
 In your browser open url http://localhost:8001
 The username and password is stored in file services/mysql/.env
-
+```
 ### Verify pgMyAdmin
-#### pgMyAdmin service is configured on port 8002
+pgMyAdmin service is configured on port 8002
+```
 In your browser open url http://localhost:8002
 The username and password is stored in file services/pgsql/.env
+```
