@@ -177,5 +177,5 @@ ENTRYPOINT ["docker-entrypoint.sh"]
 COPY create.sql /docker-entrypoint-initdb.d
 
 EXPOSE 5432
-#CMD ["postgres"]
-CMD ["gosu", "postgres", "postgres"]
+CMD ["postgres"]
+#CMD ["gosu", "postgres", "postgres"]

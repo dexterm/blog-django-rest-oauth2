@@ -11,10 +11,21 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-
+from blog.databaserouter import DatabaseRouter
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# Handling Key Import Errors
+def get_env_variable(var_name):
+    """ Get the environment variable or return exception """
+    try:
+        return os.environ[var_name]
+    except KeyError:
+        error_msg = "Set the %s environment variable" % var_name
+        raise ImproperlyConfigured(error_msg)
+
+# Get ENV VARIABLES key
+ENV_ROLE = get_env_variable('ENV_ROLE')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -73,13 +84,59 @@ WSGI_APPLICATION = 'blogoauth2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
+DATABASE_ROUTERS = ['blog.databaserouter.DatabaseRouter']
+DATABASE_APPS_MAPPING = {'mysql_data': 'mysql_data',
+                        'pg_data':'pg_data'}
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
+    'mysql_data': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': get_env_variable('MYSQL_DB'),
+        'USER': get_env_variable('MYSQL_USER'),
+        'PASSWORD': get_env_variable('MYSQL_PASSWORD'),
+        'HOST': get_env_variable('MYSQL_HOST'),
+        'PORT': get_env_variable('MYSQL_PORT'),
+    },
+    'pg_data': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': get_env_variable('POSTGRES_DB'),
+        'USER': get_env_variable('POSTGRES_USER'),
+        'PASSWORD': get_env_variable('POSTGRES_PASSWORD'),
+        'HOST': get_env_variable('POSTGRES_HOST'),
+        'PORT': get_env_variable('POSTGRES_PORT'),
     }
 }
 
+#this is for mysql database
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': get_env_variable('MYSQL_DB'),
+#        'USER': get_env_variable('MYSQL_USER'),
+#        'PASSWORD': get_env_variable('MYSQL_PASSWORD'),
+#        'HOST': get_env_variable('MYSQL_HOST'),
+#    }
+#}
+
+#this is for postgresql database
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': get_env_variable('POSTGRES_DB'),
+#        'USER': get_env_variable('POSTGRES_USER'),
+#        'PASSWORD': get_env_variable('POSTGRES_PASSWORD'),
+#        'HOST': get_env_variable('POSTGRES_HOST'),
+#    }
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

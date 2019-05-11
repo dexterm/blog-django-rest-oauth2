@@ -44,15 +44,15 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./data-volume-pg:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_USER=django
-      - POSTGRES_PASSWORD=djangosecret
-      - POSTGRES_DB=my_project
-      - DB_NAME=my_project
+      - data-volume-pg:/var/lib/postgresql/data
+    #environment:
+    #  - POSTGRES_USER=django
+    #  - POSTGRES_PASSWORD=djangosecret
+    #  - POSTGRES_DB=my_project
+    #  - DB_NAME=my_project
 
-    #env_file:
-    #  - ./services/pgsql/.env
+    env_file:
+      - ./services/pgsql/.env
     networks:
       - app
 
