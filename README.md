@@ -28,3 +28,13 @@ docker exec -it pgdb  psql -h pgdb -U django -d my_project
 Syntax:
  docker exec -it <service_name> psql -h <postgres_service_name> -U <POSTGRES_USER> -d <POSTGRES_DB>
 ```
+
+### Verify phpMyAdmin
+#### phpMyAdmin service is configured on port 8001
+In your browser open url http://localhost:8001
+The username and password is stored in file services/mysql/.env
+
+### Verify pgMyAdmin
+#### pgMyAdmin service is configured on port 8002
+In your browser open url http://localhost:8002
+The username and password is stored in file services/pgsql/.env
