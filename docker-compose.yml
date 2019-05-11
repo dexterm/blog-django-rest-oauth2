@@ -14,10 +14,10 @@ services:
     #working_dir: /home/app
     #extra_hosts:
     #  - "internal_host:172.27.0.1"
-    #env_file:
-    #  - .env
     environment:
       SERVICE_NAME: djangoapp
+    env_file:
+      - ./services/web/.env
     depends_on:
       - pgdb # <--- this can be commented depending on which database is in use
       - mysqldb # <--- this can be commented depending on which database is in use
@@ -33,20 +33,26 @@ services:
     #  - .:/home/app/web
     #  #- ./services/web:/home/app/web/
 
-  #postgresql service
   pgdb:
-    build:
-      context: ./services/pgsql
-      dockerfile: Dockerfile
+    #build:
+    #  context: ./services/pgsql
+    #  dockerfile: Dockerfile
+    image: postgres:latest
     container_name: pgdb
     restart: unless-stopped
     tty: true
     ports:
-      - "54320:5432"
+      - "5432:5432"
     volumes:
-      - data-volume-pg:/var/lib/postgresql
-    env_file:
-      - ./services/pgsql/.env
+      - ./data-volume-pg:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=django
+      - POSTGRES_PASSWORD=djangosecret
+      - POSTGRES_DB=my_project
+      - DB_NAME=my_project
+
+    #env_file:
+    #  - ./services/pgsql/.env
     networks:
       - app
 
@@ -126,6 +132,8 @@ services:
     networks:
       - app
     restart: unless-stopped
+    depends_on:
+        - pgdb
 
 
 networks:

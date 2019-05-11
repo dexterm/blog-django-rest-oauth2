@@ -33,7 +33,11 @@ RUN apt-get update && apt-get install -y \
     git \
     curl \
     libpq-dev \
-    python-dev
+    python-dev \
+    #py-mysqldb \
+    default-libmysqlclient-dev
+
+#    libmysqlclient-dev
 
 #####setup virtualenv for python if required ####
 #RUN pip install virtualenv

@@ -169,8 +169,13 @@ RUN mkdir -p "$PGDATA" && chown -R postgres:postgres "$PGDATA" && chmod 777 "$PG
 VOLUME /var/lib/postgresql/data
 
 COPY docker-entrypoint.sh /usr/local/bin/
+
 RUN ln -s usr/local/bin/docker-entrypoint.sh / # backwards compat
+RUN chmod +x /docker-entrypoint.sh
 ENTRYPOINT ["docker-entrypoint.sh"]
+# run create.sql on init
+COPY create.sql /docker-entrypoint-initdb.d
 
 EXPOSE 5432
-CMD ["postgres"]
+#CMD ["postgres"]
+CMD ["gosu", "postgres", "postgres"]
