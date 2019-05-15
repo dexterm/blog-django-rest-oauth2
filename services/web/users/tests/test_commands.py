@@ -1,7 +1,7 @@
 import os
 from io import StringIO
 from unittest import mock
-
+#https://realpython.com/testing-in-django-part-1-best-practices-and-examples/
 #from admin_scripts.tests import AdminScriptTestCase
 from django.apps import apps
 from django.core import management

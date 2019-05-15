@@ -14,7 +14,7 @@ import os
 from blog.databaserouter import DatabaseRouter
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+APPEND_SLASH = True
 # Handling Key Import Errors
 def get_env_variable(var_name):
     """ Get the environment variable or return exception """
@@ -50,9 +50,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework', # <-- add this 3rd party module
     'oauth2_provider', # <-- add this 3rd party module
-    'blogoauth2', # <-- add this module name used while running startproject
+    'corsheaders', # <-- add this 3rd party module
     'blog', # <-- add this module name created using python manage.py startapp blog
-    'users' # <-- add this module name created using python manage.py startapp users
+    'users', # <-- add this module name created using python manage.py startapp users
+    'api' # <-- add this module name created using python manage.py startapp api
 ]
 
 MIDDLEWARE = [
@@ -63,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'blogoauth2.urls'
@@ -184,8 +186,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static') #<-- THIS IS FOR rendering static files inside a docker container
 
 REST_FRAMEWORK = {
    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -198,7 +199,7 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        #'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
         'rest_framework.permissions.IsAuthenticated',
 
     ]
@@ -208,3 +209,14 @@ OAUTH2_PROVIDER = {
     # this is the list of available scopes
     'SCOPES': {'read': 'Read scope', 'write': 'Write scope', 'groups': 'Access to your groups'}
 }
+
+AUTHENTICATION_BACKENDS = (
+    #'rest_framework_social_oauth2.backends.DjangoOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+#MODIFY THE USER MODEL WITH A CUSTOMER USER MODEL
+#https://wsvincent.com/django-tips-custom-user-model/
+#AUTH_USER_MODEL = 'users.User' # new
+
+CORS_ORIGIN_ALLOW_ALL = True

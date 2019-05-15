@@ -88,3 +88,24 @@ docker exec -it djangoapp  python manage.py createuser <username> <email> <passw
         ├── test_models.py
         └── test_views.py
 ```        
+
+### If you get an error
+log.Category.created_by: (fields.E301) Field defines a relation with the model 'auth.User', which has been swapped out.
+	HINT: Update the relation to point at 'settings.AUTH_USER_MODEL'.
+simply replace   settings.AUTH_USER_MODEL with users.User
+replace this code
+```
+updated_by = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE, related_name='+')
+```
+WITH
+```
+from users.User import User as customUser
+models.ForeignKey(customUser, null=True, on_delete=models.CASCADE, related_name='+')
+```
+### Check if admin page is rendered proplery
+point your browser to http://localhost/admin
+If the page is not rendered properly, it could be because the folder static is not mapped inside the container
+run below command to generate static files into /home/project/web/static
+```
+docker exec -it djangoapp python manage.py collectstatic
+```
