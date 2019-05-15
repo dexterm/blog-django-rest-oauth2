@@ -6,10 +6,13 @@ from enum import Enum
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
-class ApprovalStatus(Enum):   # A subclass of Enum
+
+class Status(Enum):   # A subclass of Enum
+    #https://hackernoon.com/using-enum-as-model-field-choice-in-django-92d8b97aaa63
     AP = "Approved"
     PE = "Pending"
     RE = "Rejected"
+    DR = "Draft"
 
 # a post must belong to a category and a category must belong to a blog a post can belong to multiple categories
 # Lets assume there is a blog called PYTHON, this can have several categories, coding standards, pythonic coding, djang
@@ -41,7 +44,11 @@ class Post(models.Model):
     updated_by = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE, related_name='+')
     total_comments = models.IntegerField(null=False, blank=False, default=0)
     comments = models.ManyToManyField(Category,blank=False,null=False, related_name='comments')
-
+    status = models.CharField(
+      max_length=5,
+      choices=[(tag.name, tag.value) for tag in Status],  # Choices is a list of Tuple
+      default=Status.DR
+    )
 
     class Meta:
         verbose_name = _("Post")
@@ -54,7 +61,8 @@ class Comment(models.Model):
     content = models.TextField(null = False, blank=False, max_length=1000)
     status = models.CharField(
       max_length=5,
-      choices=[(tag, tag.value) for tag in ApprovalStatus]  # Choices is a list of Tuple
+      choices=[(tag.name, tag.value) for tag in Status],  # Choices is a list of Tuple
+      default=Status.PE
     )
     #post = models.ForeignKey(Post, on_delete = models.CASCADE, related_name='comments')
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

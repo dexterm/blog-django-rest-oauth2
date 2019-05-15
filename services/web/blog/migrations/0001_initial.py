@@ -48,7 +48,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('content', models.TextField(max_length=1000)),
-                ('status', models.CharField(choices=[(blog.models.ApprovalStatus('Approved'), 'Approved'), (blog.models.ApprovalStatus('Pending'), 'Pending'), (blog.models.ApprovalStatus('Rejected'), 'Rejected')], max_length=5)),
+                ('status', models.CharField(choices=[(blog.models.Status('Approved'), 'Approved'), (blog.models.Status('Pending'), 'Pending'), (blog.models.Status('Rejected'), 'Rejected')], max_length=5)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(null=True)),
                 ('created_by', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
