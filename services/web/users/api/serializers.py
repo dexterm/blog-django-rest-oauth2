@@ -43,6 +43,6 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         view_name='profile-detail')
     class Meta:
         model = User
-        depth = 1
+        #depth = 1
         fields = ('url', 'id', 'username', 'first_name', 'last_name', 'email',
-                    'is_superuser', 'is_staff', 'profile', 'profile_url')
+                    'profile_url')

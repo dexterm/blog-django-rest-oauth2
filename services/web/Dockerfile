@@ -52,6 +52,13 @@ RUN pip install -r requirements.txt
 
 # Create directory for the app user
 RUN mkdir -p /home/project
+#set variable for log directory
+ENV LOG_DIR=/var/log/django
+#create a log directory if does not exist
+RUN mkdir -p $LOG_DIR
+#copy the empty file into /var/log/django to avoid errors wheny django initialises
+COPY django_dba.log $LOG_DIR
+
 
 # Create the app user
 RUN groupadd app && useradd -g app app
@@ -73,6 +80,9 @@ COPY . $APP_HOME
 
 # Chown all the files to the app user
 RUN chown -R app:app $APP_HOME
+
+# Chown all the /var/log files to the app user
+RUN chown -R app:app $LOG_DIR
 
 # Change to the app user
 USER app

@@ -10,6 +10,9 @@ class Profile(models.Model):
     lname = models.CharField(max_length=255, blank=True, null=True)
     dob = models.DateField(null=True, blank=True)
 
+    @property
+    def fullname(self):
+        return self.fname + ' ' + self.lname
 
     def calculate_age(self):
         today = date.today()
