@@ -121,24 +121,24 @@ run below command to generate static files into /home/project/web/static
 docker exec -it djangoapp python manage.py collectstatic
 ```
 
-...### Use curl to test api end points
-...For this an oauth client id and client secret must be created
-...Point your browser to http://localhost/o/applications
-...Click the button "New application"
+   ### Use curl to test api end points
+   For this an oauth client id and client secret must be created
+   Point your browser to http://localhost/o/applications
+   Click the button "New application"
 
-...In the form that follows fill in the following details
-...name: Any name that you wish to identify the application with ex: webapi
-...client id and client secret should not be modified, leave as is
-...client type: Select "confidential" from the dropdown list
-...Authorization Grant Type: Select "Resource owner password based" from the drop down list
-...Make note or copy the client id and secret it will be required for generating tokens
-...Finally click the save button
+   In the form that follows fill in the following details
+   name: Any name that you wish to identify the application with ex: webapi
+   client id and client secret should not be modified, leave as is
+   client type: Select "confidential" from the dropdown list
+   Authorization Grant Type: Select "Resource owner password based" from the drop down list
+   Make note or copy the client id and secret it will be required for generating tokens
+   Finally click the save button
 
 #### Generate a token
 Assuming you have created a superuser or regular user, in the command below replace with your credentials
-...```
+   ```
     curl -X POST -d "grant_type=password&username=joh&password=john&scope=read" -u"AlwzTR73kuJnS9RIUHKDmPaWATBnk5AUXpFhZdbR:6kDPkSp63ZQnrqfV41rheUxyyclWeLyZNDtphTQWLja4rM2UyKJsLKNBky43zhf5ZyEYwHVCvN89VxAp6jNnd0eyHi70I2gFueZ3QUVCgYjl2T69X0BhuuQ8kYU13Lpq" http://localhost/o/token/
-...```
+   ```
 You should receive a response similar to this
 {"access_token": "T8ppcqd8U3BFrvONyd6Hxi8FzMLYxh", "expires_in": 36000, "token_type": "Bearer", "scope": "read", "refresh_token": "LV1J8aZCfutGt5fUA1dk6tYRvIfryy"}
 Make note or copy the access_token value : T8ppcqd8U3BFrvONyd6Hxi8FzMLYxh
