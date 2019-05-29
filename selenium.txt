@@ -1,0 +1,9 @@
+https://www.youtube.com/watch?v=5vcsbqMc2Cw
+https://www.youtube.com/watch?v=nDZgYDqoPqc
+https://github.com/Akulavenkatesh/python_selenium_parallel_tests
+https://github.com/peterkappus/selenium-cucumber-docker
+https://testdriven.io/blog/distributed-testing-with-selenium-grid/
+https://softwaretester.info/python-selenium-grid-and-docker/
+https://stackoverflow.com/questions/54358026/running-python-selenium-in-docker-compose
+http://www.testautomationguru.com/selenium-webdriver-how-to-run-multiple-test-suites-using-docker-compose/
+https://testdriven.io/blog/concurrent-web-scraping-with-selenium-grid-and-docker-swarm/#.XIpO_BNy_tg.reddit
