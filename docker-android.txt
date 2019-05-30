@@ -1,0 +1,7 @@
+https://medium.com/@AndreSand/android-emulator-on-docker-container-f20c49b129ef
+https://medium.com/@AndreSand/building-android-with-docker-8dbf717f54d4
+https://ncona.com/2018/07/android-development-with-docker-2/
+
+https://github.com/SrinivasanTarget/DockerAppium
+https://github.com/budtmo/docker-android/blob/master/README_APPIUM_AND_SELENIUM.md
+https://github.com/budtmo/docker-android/blob/master/docker/Real_device
