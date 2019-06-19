@@ -61,3 +61,12 @@ curl -H "Authorization: Bearer n6ArD7GVNEjSYdz2Wc1mXuhqpmhQV1" http://localhost/
 
 ###raw sql query
 https://github.com/twtrubiks/django-rest-framework-tutorial/blob/master/musics/views.py
+https://medium.com/@PyGuyCharles/python-sql-to-json-and-beyond-3e3a36d32853
+
+
+JWT TOKEN
+https://dev.to/apcelent/json-web-token-based-authentication-backend-for-django-project-3n90
+https://code.tutsplus.com/tutorials/how-to-authenticate-with-jwt-in-django--cms-30460
+https://medium.com/python-pandemonium/json-web-token-based-authentication-in-django-b6dcfa42a332
+https://thinkster.io/tutorials/django-json-api/authentication
+https://groups.google.com/forum/#!topic/django-rest-framework/BlxIeI6nHXo
