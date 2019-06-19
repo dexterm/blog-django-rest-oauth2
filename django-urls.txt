@@ -1,0 +1,63 @@
+https://micropyramid.com/blog/introduction-to-api-development-with-django-rest-framework/
+https://codeburst.io/building-an-api-with-django-rest-framework-and-class-based-views-75b369b30396
+https://medium.com/backticks-tildes/lets-build-an-api-with-django-rest-framework-32fcf40231e5
+http://books.agiliq.com/projects/django-api-polls-tutorial/en/latest/introduction.html
+https://medium.com/@halfspring/guide-to-an-oauth2-api-with-django-6ba66a31d6d
+https://pybit.es/django-rest-tips-api-digital-ocean.html
+https://www.django-rest-framework.org/tutorial/quickstart/#views
+https://www.techiediaries.com/django-vuejs-api-views/
+https://realpython.com/django-rest-framework-class-based-views/
+https://realpython.com/test-driven-development-of-a-django-restful-api/#django-app-and-rest-framework-setup (CRUD)
+https://www.django-rest-framework.org/community/tutorials-and-resources/ (RESOURCES)
+http://michal.karzynski.pl/blog/2013/06/09/django-nginx-gunicorn-virtualenv-supervisor/
+https://testdriven.io/blog/dockerizing-django-with-postgres-gunicorn-and-nginx/
+http://pawamoy.github.io/2018/02/01/docker-compose-django-postgres-nginx.html#dockerfile-a-simple-django-application-served-by-gunicorn
+https://www.webforefront.com/django/setuprelationshipsdjangomodels.html
+http://polyglot.ninja/django-rest-framework-viewset-modelviewset-router/
+https://wsvincent.com/django-rest-framework-serializers-viewsets-routers/
+https://www.digitalocean.com/community/tutorials/how-to-build-a-modern-web-application-to-manage-customer-information-with-django-and-react-on-ubuntu-18-04
+
+https://github.com/TheDumbfounds/django-rest-api-tutorial (*****)
+https://www.madewithtea.com/simple-todo-api-with-django-and-oauth2.html(***)
+https://raphaelyancey.fr/en/2018/05/28/setting-up-django-oauth2-server-client.html(****) (https://github.com/raphaelyancey/django-oauth2-example)
+https://github.com/guidocecilio/django-restframework-userprofile (good reference for model relationships and fetching of related data using viewsets and serializers)
+https://stackoverflow.com/questions/27641703/how-to-test-an-api-endpoint-with-django-rest-framework-using-django-oauth-toolki (Testing oauth2 tokens)
+https://djangotricks.blogspot.com/2018/05/queryset-filters-on-many-to-many-relations.html (****)
+https://github.com/encode/django-rest-framework
+https://www.madewithtea.com/simple-todo-api-with-django-and-oauth2.html (*** curl POST request)
+https://blog.mounirmesselmeni.de/2017/12/16/building-api-with-django-rest-framework/ (Nested relationships using serializer)
+http://www.andrew-tremblay.com/blog/django-common-models/  (### django best practice ###)
+https://stackoverflow.com/questions/51247876/related-object-serializer-django-restframework (###how to set created_by_id in serializer ###)
+https://hackernoon.com/django-orm-relationships-cheat-sheet-14433d6cf68c (Django ORM Cheat sheet, very good for many-to-many-relationships)
+
+https://stackoverflow.com/questions/43853588/django-rest-framework-create-object-with-relationship-many-to-many/54222988#54222988
+https://codereview.stackexchange.com/questions/164616/django-rest-framework-manytomany-relationship-through-intermediate-model
+https://github.com/vintasoftware/drf-rw-serializers/tree/master/example_app  (### serializers nested manytomany relationship)
+https://github.com/aarav-tech/ems (Relationship, CRUD & serializers)
+https://realpython.com/test-driven-development-of-a-django-restful-api/#post ( Test Driver tests for rest api)
+https://django.cowhite.com/blog/dynamic-fields-in-django-rest-framwork-serializers/ (django model properties and serializer properties)
+https://www.knowlarity.com/blog/dos-donts-improve-performance-django-websites/ (django dos and donts)
+https://stackoverflow.com/questions/50625057/nested-serializer-for-many-to-many (Solution for nested manytomany relationships, CRUD operations)
+http://charlesleifer.com/blog/describing-relationships-djangos-manytomany-through/ (manyto many orm)
+https://medium.com/profil-software-blog/10-things-you-need-to-know-to-effectively-use-django-rest-framework-7db7728910e0 (10 django features)
+https://github.com/orsinium/python-syslog-logstash (Docker log manage for django)
+https://medium.com/ncr-edinburgh/docker-tips-tricks-516b9ba41aa2 (Docker logging tricks)
+https://medium.freecodecamp.org/how-to-setup-log-rotation-for-a-docker-container-a508093912b2 (Docker setup log rotation)
+https://www.webforefront.com/django/setupdjangologging.html (Django custom logging setup)
+https://lincolnloop.com/blog/django-logging-right-way/ (Django logging the right way)
+https://medium.com/aubergine-solutions/decide-serializer-class-dynamically-based-on-viewset-actions-in-django-rest-framework-drf-fb6bb1246af2 (Limit privileges to users of same company)
+####----------####
+clientid:  zw0GR6OhHygGjPClejIg5cpBQJkJXNJ1jmQoCzsP
+clientsecret: B4OcuNIApBD6OSBWGdIuqzQ2D5q66I9TAx82PuNouiWzyyuMUYRavToLheCm44O43jjCJeAVCFyf1ZZRDmyF2QR89gXXeV9JT7s5lI5Oa7oVbKXTFbooPBtsWswLaPzJ
+
+curl -X POST -d "grant_type=password&username=dexter&password=dexter&scope=read" -u"AlwzTR73kuJnS9RIUHKDmPaWATBnk5AUXpFhZdbR:6kDPkSp63ZQnrqfV41rheUxyyclWeLyZNDtphTQWLja4rM2UyKJsLKNBky43zhf5ZyEYwHVCvN89VxAp6jNnd0eyHi70I2gFueZ3QUVCgYjl2T69X0BhuuQ8kYU13Lpq" http://localhost/o/token/
+
+
+curl -H "Authorization: Bearer n6ArD7GVNEjSYdz2Wc1mXuhqpmhQV1" http://localhost/api/v1/blogs
+####----------####
+
+
+curl -H "Authorization: Bearer n6ArD7GVNEjSYdz2Wc1mXuhqpmhQV1" http://localhost/api/v1/blogs/
+
+###raw sql query
+https://github.com/twtrubiks/django-rest-framework-tutorial/blob/master/musics/views.py
