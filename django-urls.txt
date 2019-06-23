@@ -70,3 +70,8 @@ https://code.tutsplus.com/tutorials/how-to-authenticate-with-jwt-in-django--cms-
 https://medium.com/python-pandemonium/json-web-token-based-authentication-in-django-b6dcfa42a332
 https://thinkster.io/tutorials/django-json-api/authentication
 https://groups.google.com/forum/#!topic/django-rest-framework/BlxIeI6nHXo
+
+
+MYSQL JSON OUTPUT
+https://stackoverflow.com/questions/3286525/return-sql-table-as-json-in-python
+https://stackoverflow.com/questions/46175635/json-in-python-from-mysql-with-additional-key-value-pairs
