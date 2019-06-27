@@ -1,1 +1,6 @@
 https://blog.logrocket.com/why-use-redux-reasons-with-clear-examples-d21bffd5835/
+
+https://blog.logrocket.com/versatile-webpack-configurations-for-your-react-application-e6ebf6615cc/
+https://www.valentinog.com/blog/webpack/
+https://dev.to/pixelgoo/how-to-configure-webpack-from-scratch-for-a-basic-website-46a5 **
+https://hackernoon.com/how-to-build-a-react-project-from-scratch-using-webpack-4-and-babel-56d4a26afd32
