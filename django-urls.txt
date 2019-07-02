@@ -75,3 +75,6 @@ https://groups.google.com/forum/#!topic/django-rest-framework/BlxIeI6nHXo
 MYSQL JSON OUTPUT
 https://stackoverflow.com/questions/3286525/return-sql-table-as-json-in-python
 https://stackoverflow.com/questions/46175635/json-in-python-from-mysql-with-additional-key-value-pairs
+
+django cache view decorator
+https://kite.com/python/docs/django.views.decorators.cache.cache_page
