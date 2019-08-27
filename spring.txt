@@ -1,0 +1,8 @@
+https://www.javainuse.com/spring/spring-boot-oauth-access-token
+https://github.com/caelcs/spring-security-mongo
+https://developer.okta.com/blog/2017/10/11/developers-guide-to-docker-part-3
+https://stackoverflow.com/questions/37423659/how-to-create-user-in-mongodb-with-docker-compose/37427682
+https://dzone.com/articles/building-scalable-container-ready-and-secure-micro
+https://github.com/enr1c091/microservices-oauth
+https://github.com/caelcs/spring-security-mongo
+https://www.baeldung.com/spring-security-zuul-oauth-jwt
